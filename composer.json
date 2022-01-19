@@ -1,0 +1,62 @@
+{
+  "name": "valantic-spryker/price-product-customer-group-storage",
+  "type": "library",
+  "description": "This modules is used for saving customer group prices into storage and contains plugins for reading them.",
+  "license": "proprietary",
+  "require": {
+    "php": ">=7.4",
+    "spryker/currency": "^3.0.0",
+    "spryker/customer": "^7.10.0",
+    "spryker/customer-group": "^2.6",
+    "spryker/event-behavior": "^1.1.0",
+    "spryker/kernel": "^3.37.0",
+    "spryker/price-product": "^2.11.0 || ^4.0.0",
+    "spryker/price-product-storage-extension": "^1.0.0",
+    "spryker/propel-orm": "^1.0.0",
+    "spryker/publisher-extension": "^1.0.0",
+    "spryker/storage": "^3.0.0",
+    "spryker/store": "^1.0.0",
+    "spryker/synchronization": "^0.2.0 || ^1.0.0",
+    "spryker/synchronization-behavior": "^1.0.0",
+    "spryker/synchronization-extension": "^1.1.0",
+    "spryker/transfer": "^3.25.0",
+    "valantic-spryker/price-product-customer-group": "^0.2.0",
+    "valantic-spryker/price-product-customer-group-storage-extension": "^0.2.0"
+  },
+  "require-dev": {
+    "spryker/code-sniffer": "*",
+    "spryker/event": "*"
+  },
+  "suggest": {
+    "spryker/event": "If you want to use Event plugins, minimum required version: 2.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "ValanticSpryker\\": "src/ValanticSpryker/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "cs-check": "phpcs -p -s --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/",
+    "cs-fix": "phpcbf -p --standard=vendor/spryker/code-sniffer/Spryker/ruleset.xml src/"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  },
+  "config": {
+    "sort-packages": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true
+    },
+    "gitlab-domains": ["gitlab.nxs360.com"]
+  },
+  "repositories": {
+    "gitlab.nxs360.com/461": {
+      "type": "composer",
+      "url": "https://gitlab.nxs360.com/api/v4/group/461/-/packages/composer/packages.json"
+    }
+  }
+}
