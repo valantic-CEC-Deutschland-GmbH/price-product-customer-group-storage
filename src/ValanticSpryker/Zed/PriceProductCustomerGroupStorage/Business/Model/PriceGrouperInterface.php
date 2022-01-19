@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Business\Model;
 
+use Generated\Shared\Transfer\PriceProductCustomerGroupStorageTransfer;
+
 interface PriceGrouperInterface
 {
     /**

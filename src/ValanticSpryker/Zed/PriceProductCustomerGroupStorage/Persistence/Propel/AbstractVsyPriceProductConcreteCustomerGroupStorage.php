@@ -6,7 +6,6 @@ namespace ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence\Prope
 
 use Orm\Zed\PriceProductCustomerGroupStorage\Persistence\Base\VsyPriceProductConcreteCustomerGroupStorage as BaseVsyPriceProductConcreteCustomerGroupStorage;
 
-
 class AbstractVsyPriceProductConcreteCustomerGroupStorage extends BaseVsyPriceProductConcreteCustomerGroupStorage
 {
 }
