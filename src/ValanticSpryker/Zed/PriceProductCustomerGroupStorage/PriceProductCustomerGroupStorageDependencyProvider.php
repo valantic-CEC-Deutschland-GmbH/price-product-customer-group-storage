@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Zed\PriceProductCustomerGroupStorage;
 
+use Orm\Zed\PriceProductCustomerGroup\Persistence\VsyPriceProductCustomerGroupQuery;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Dependency\Facade\PriceProductCustomerGroupStorageToEventBehaviorFacadeBridge;

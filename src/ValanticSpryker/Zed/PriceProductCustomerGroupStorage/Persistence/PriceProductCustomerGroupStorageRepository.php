@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence;
 
+use Generated\Shared\Transfer\FilterTransfer;
+use Orm\Zed\PriceProductCustomerGroup\Persistence\VsyPriceProductCustomerGroupQuery;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
@@ -299,7 +301,7 @@ class PriceProductCustomerGroupStorageRepository extends AbstractRepository impl
             ->endUse()
             ->endUse()
             ->useCustomerGroupQuery()
-            ->useVsyCustomerGroupToCustomerGroupQuery()
+            ->useSpyCustomerGroupToCustomerQuery()
             ->_if((bool)$filterBycustomerGroupIds)
             ->filterByFkCustomerGroup_In($filterBycustomerGroupIds)
             ->_endif()

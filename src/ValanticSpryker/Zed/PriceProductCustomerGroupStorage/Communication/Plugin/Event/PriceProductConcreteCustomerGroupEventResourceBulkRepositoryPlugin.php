@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Communication\Plugin\Event;
 
+use Generated\Shared\Transfer\FilterTransfer;
+use Orm\Zed\PriceProductCustomerGroup\Persistence\Map\VsyPriceProductCustomerGroupTableMap;
 use Spryker\Zed\EventBehavior\Dependency\Plugin\EventResourceBulkRepositoryPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use ValanticSpryker\Shared\PriceProductCustomerGroupStorage\PriceProductCustomerGroupStorageConstants;

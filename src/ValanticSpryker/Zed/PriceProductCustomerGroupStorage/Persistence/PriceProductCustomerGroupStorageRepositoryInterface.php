@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence;
 
+use Generated\Shared\Transfer\FilterTransfer;
+
 /**
  * @method \ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence\PriceProductCustomerGroupStoragePersistenceFactory getFactory()
  */

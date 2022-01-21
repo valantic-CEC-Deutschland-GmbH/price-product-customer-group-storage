@@ -78,3 +78,21 @@ public function getPriceDimensionStorageReaderPlugins(): array
     ];
 }
 ```
+
+`src/Pyz/Zed/EventBehavior/EventBehaviorDependencyProvider.php`
+
+```
+use ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Communication\Plugin\Event\PriceProductAbstractCustomerGroupEventResourceBulkRepositoryPlugin;
+use ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Communication\Plugin\Event\PriceProductConcreteCustomerGroupEventResourceBulkRepositoryPlugin;
+
+...
+
+protected function getEventTriggerResourcePlugins()
+{
+    return [
+        ...
+        new PriceProductAbstractCustomerGroupEventResourceBulkRepositoryPlugin(),
+        new PriceProductConcreteCustomerGroupEventResourceBulkRepositoryPlugin(),
+    ];
+}
+```
