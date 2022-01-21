@@ -5,6 +5,8 @@ declare(strict_types = 1);
 namespace ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence;
 
 use Orm\Zed\PriceProductCustomerGroup\Persistence\VsyPriceProductCustomerGroupQuery;
+use Orm\Zed\PriceProductCustomerGroupStorage\Persistence\VsyPriceProductAbstractCustomerGroupStorageQuery;
+use Orm\Zed\PriceProductCustomerGroupStorage\Persistence\VsyPriceProductConcreteCustomerGroupStorageQuery;
 use Spryker\Zed\Kernel\Persistence\AbstractPersistenceFactory;
 use ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence\Mapper\CustomerGroupPriceProductMapper;
 use ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence\Mapper\CustomerGroupPriceProductMapperInterface;

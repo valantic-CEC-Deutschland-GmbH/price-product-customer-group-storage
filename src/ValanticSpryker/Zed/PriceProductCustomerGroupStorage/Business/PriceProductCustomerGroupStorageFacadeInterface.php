@@ -13,8 +13,8 @@ interface PriceProductCustomerGroupStorageFacadeInterface
     /**
      * Specification:
      *  - Publish customer group prices for product abstracts.
-     *  - Uses the given customer group unit IDs.
-     *  - Refreshes the prices data for customer groups for all product abstracts and customer groups.
+     *  - Uses the given customer group IDs.
+     *  - Refreshes the prices data for customer group for all product abstracts.
      *  - Executes `PriceProductCustomerGroupStorageFilterPluginInterface` plugin stack.
      *
      * @api
@@ -28,8 +28,8 @@ interface PriceProductCustomerGroupStorageFacadeInterface
     /**
      * Specification:
      *  - Publish customer group prices for product concretes.
-     *  - Uses the given company business unit IDs.
-     *  - Refreshes the prices data for business units for all product concretes and customer groups.
+     *  - Uses the given customer group IDs.
+     *  - Refreshes the prices data for customer group for all product concretes.
      *  - Executes `PriceProductCustomerGroupStorageFilterPluginInterface` plugin stack.
      *
      * @api
@@ -38,12 +38,12 @@ interface PriceProductCustomerGroupStorageFacadeInterface
      *
      * @return void
      */
-    public function publishConcretePriceProductByBusinessUnits(array $customerGroupIds): void;
+    public function publishConcretePriceProductByCustomerGroups(array $customerGroupIds): void;
 
     /**
      * Specification:
      *  - Publish customer group prices for product abstracts.
-     *  - Uses the given IDs of the `spy_price_product_merchant_relationship` table.
+     *  - Uses the given IDs of the `vsy_price_product_customer_group` table.
      *  - Merges created or updated prices to the existing ones.
      *  - Executes `PriceProductCustomerGroupStorageFilterPluginInterface` plugin stack.
      *
@@ -59,7 +59,7 @@ interface PriceProductCustomerGroupStorageFacadeInterface
      * Specification:
      *  - Publish customer group prices for product abstracts.
      *  - Uses the given abstract product IDs.
-     *  - Refreshes the prices data for product abstracts for all business units and customer groups.
+     *  - Refreshes the prices data for product abstracts for all customer groups.
      *  - Executes `PriceProductCustomerGroupStorageFilterPluginInterface` plugin stack.
      *
      * @api
@@ -73,7 +73,7 @@ interface PriceProductCustomerGroupStorageFacadeInterface
     /**
      * Specification:
      *  - Publish customer group prices for product concretes.
-     *  - Uses the given IDs of the `spy_price_product_merchant_relationship` table.
+     *  - Uses the given IDs of the `vsy_price_product_customer_group` table.
      *  - Merges created or updated prices to the existing ones.
      *  - Executes `PriceProductCustomerGroupStorageFilterPluginInterface` plugin stack.
      *
@@ -89,7 +89,7 @@ interface PriceProductCustomerGroupStorageFacadeInterface
      * Specification:
      *  - Publish customer group prices for product concretes.
      *  - Uses the given concrete product IDs.
-     *  - Refreshes the prices data for product concretes for all business units and customer groups.
+     *  - Refreshes the prices data for product concretes for all customer groups.
      *  - Executes `PriceProductCustomerGroupStorageFilterPluginInterface` plugin stack.
      *
      * @api
@@ -99,19 +99,4 @@ interface PriceProductCustomerGroupStorageFacadeInterface
      * @return void
      */
     public function publishConcretePriceProductByProductIds(array $productIds): void;
-
-    /**
-     * Specification:
-     *  - Publishes customer group prices for product concretes and abstracts when merchant active changing.
-     *  - Refreshes the prices data for products for business units, customer groups and merchants from eventEntityTransfers.
-     *  - Deletes the product prices from storage for business units, customer groups if merchant is deactivated.
-     *  - Executes `PriceProductCustomerGroupStorageFilterPluginInterface` plugin stack.
-     *
-     * @api
-     *
-     * @param array<\Generated\Shared\Transfer\EventEntityTransfer> $eventEntityTransfers
-     *
-     * @return void
-     */
-    public function writeCollectionByMerchantEvents(array $eventEntityTransfers): void;
 }

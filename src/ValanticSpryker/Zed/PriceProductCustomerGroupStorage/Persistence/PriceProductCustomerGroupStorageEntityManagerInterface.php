@@ -4,6 +4,10 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence;
 
+use Generated\Shared\Transfer\PriceProductCustomerGroupStorageTransfer;
+use Orm\Zed\PriceProductCustomerGroupStorage\Persistence\VsyPriceProductAbstractCustomerGroupStorage;
+use Orm\Zed\PriceProductCustomerGroupStorage\Persistence\VsyPriceProductConcreteCustomerGroupStorage;
+
 interface PriceProductCustomerGroupStorageEntityManagerInterface
 {
     /**

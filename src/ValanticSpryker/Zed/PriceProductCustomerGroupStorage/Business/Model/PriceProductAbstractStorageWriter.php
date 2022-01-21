@@ -9,17 +9,17 @@ use Generated\Shared\Transfer\PriceProductCustomerGroupStorageTransfer;
 class PriceProductAbstractStorageWriter extends AbstractPriceProductCustomerGroupStorageWriter implements PriceProductAbstractStorageWriterInterface
 {
     /**
-     * @param array<int> $companyBusinessUnitIds
+     * @param array<int> $customerGroupIds
      *
      * @return void
      */
-    public function publishByCustomerGroupIds(array $companyBusinessUnitIds): void
+    public function publishByCustomerGroupIds(array $customerGroupIds): void
     {
         $priceProductCustomerGroupStorageTransfers = $this->priceProductCustomerGroupStorageRepository
-            ->findCustomerGroupProductAbstractPricesDataByCustomerGroupIds($companyBusinessUnitIds);
+            ->findCustomerGroupProductAbstractPricesDataByCustomerGroupIds($customerGroupIds);
 
         $existingStorageEntities = $this->priceProductCustomerGroupStorageRepository
-            ->findExistingPriceProductAbstractCustomerGroupEntitiesByCustomerGroupIds($companyBusinessUnitIds);
+            ->findExistingPriceProductAbstractCustomerGroupEntitiesByCustomerGroupIds($customerGroupIds);
 
         $this->write($priceProductCustomerGroupStorageTransfers, $existingStorageEntities);
     }

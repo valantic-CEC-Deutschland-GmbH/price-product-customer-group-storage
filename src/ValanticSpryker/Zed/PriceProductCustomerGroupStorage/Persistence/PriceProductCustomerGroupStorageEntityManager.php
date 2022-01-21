@@ -4,10 +4,15 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence;
 
+use Generated\Shared\Transfer\PriceProductCustomerGroupStorageTransfer;
+use Orm\Zed\PriceProductCustomerGroupStorage\Persistence\VsyPriceProductAbstractCustomerGroupStorage;
+use Orm\Zed\PriceProductCustomerGroupStorage\Persistence\VsyPriceProductConcreteCustomerGroupStorage;
+use Spryker\Zed\Kernel\Persistence\AbstractEntityManager;
+
 /**
  * @method \ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence\PriceProductCustomerGroupStoragePersistenceFactory getFactory()
  */
-class PriceProductCustomerGroupStorageEntityManager implements PriceProductCustomerGroupStorageEntityManagerInterface
+class PriceProductCustomerGroupStorageEntityManager extends AbstractEntityManager implements PriceProductCustomerGroupStorageEntityManagerInterface
 {
     /**
      * @param \Generated\Shared\Transfer\PriceProductCustomerGroupStorageTransfer $priceProductCustomerGroupStorageTransfer

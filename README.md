@@ -96,3 +96,36 @@ protected function getEventTriggerResourcePlugins()
     ];
 }
 ```
+
+### Create project level module config
+`src/Pyz/Zed/PriceProductCustomerGroupStorage/PriceProductCustomerGroupStorageConfig.php`
+
+```
+<?php
+
+declare(strict_types = 1);
+
+namespace Pyz\Zed\PriceProductCustomerGroupStorage;
+
+use Pyz\Zed\Synchronization\SynchronizationConfig;
+use ValanticSpryker\Zed\PriceProductCustomerGroupStorage\PriceProductCustomerGroupStorageConfig as VsyPriceProductCustomerGroupStorageConfig;
+
+class PriceProductCustomerGroupStorageConfig extends VsyPriceProductCustomerGroupStorageConfig
+{
+    /**
+     * @return string|null
+     */
+    public function getPriceProductConcreteCustomerGroupSynchronizationPoolName(): ?string
+    {
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getPriceProductAbstractCustomerGroupSynchronizationPoolName(): ?string
+    {
+        return SynchronizationConfig::DEFAULT_SYNCHRONIZATION_POOL_NAME;
+    }
+}
+```

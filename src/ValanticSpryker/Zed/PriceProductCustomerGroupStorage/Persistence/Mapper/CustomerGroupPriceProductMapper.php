@@ -4,6 +4,9 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence\Mapper;
 
+use Generated\Shared\Transfer\PriceProductCustomerGroupStorageTransfer;
+use Generated\Shared\Transfer\PriceProductCustomerGroupValueTransfer;
+
 class CustomerGroupPriceProductMapper implements CustomerGroupPriceProductMapperInterface
 {
     /**
@@ -49,8 +52,7 @@ class CustomerGroupPriceProductMapper implements CustomerGroupPriceProductMapper
     ): PriceProductCustomerGroupStorageTransfer {
         return (new PriceProductCustomerGroupStorageTransfer())
             ->fromArray($priceProductCustomerGroupData, true)
-            ->setPriceKey($uniquePriceIndex)
-            ->setIdCustomerGroup(null);
+            ->setPriceKey($uniquePriceIndex);
     }
 
     /**

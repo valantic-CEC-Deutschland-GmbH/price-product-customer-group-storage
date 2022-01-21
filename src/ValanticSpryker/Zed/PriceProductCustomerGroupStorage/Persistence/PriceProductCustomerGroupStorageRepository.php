@@ -5,7 +5,15 @@ declare(strict_types = 1);
 namespace ValanticSpryker\Zed\PriceProductCustomerGroupStorage\Persistence;
 
 use Generated\Shared\Transfer\FilterTransfer;
+use Generated\Shared\Transfer\PriceProductCustomerGroupStorageTransfer;
+use Generated\Shared\Transfer\PriceProductCustomerGroupValueTransfer;
+use Orm\Zed\Currency\Persistence\Map\SpyCurrencyTableMap;
+use Orm\Zed\CustomerGroup\Persistence\Map\SpyCustomerGroupTableMap;
+use Orm\Zed\PriceProduct\Persistence\Map\SpyPriceProductStoreTableMap;
+use Orm\Zed\PriceProduct\Persistence\Map\SpyPriceTypeTableMap;
+use Orm\Zed\PriceProductCustomerGroup\Persistence\Map\VsyPriceProductCustomerGroupTableMap;
 use Orm\Zed\PriceProductCustomerGroup\Persistence\VsyPriceProductCustomerGroupQuery;
+use Orm\Zed\Store\Persistence\Map\SpyStoreTableMap;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Spryker\Zed\Kernel\Persistence\AbstractRepository;
@@ -21,7 +29,7 @@ class PriceProductCustomerGroupStorageRepository extends AbstractRepository impl
      *
      * @return array<\Generated\Shared\Transfer\PriceProductCustomerGroupStorageTransfer>
      */
-    public function findCustomerGroupProductAbstractPricesDataBycustomerGroupIds(array $customerGroupIds): array
+    public function findCustomerGroupProductAbstractPricesDataByCustomerGroupIds(array $customerGroupIds): array
     {
         $priceProductCustomerGroupsQuery = $this->queryPriceProductCustomerGroup($customerGroupIds)
             ->filterByFkProductAbstract(null, Criteria::ISNOTNULL);
@@ -42,7 +50,7 @@ class PriceProductCustomerGroupStorageRepository extends AbstractRepository impl
      *
      * @return array<\Generated\Shared\Transfer\PriceProductCustomerGroupStorageTransfer>
      */
-    public function findCustomerGroupProductConcretePricesDataBycustomerGroupIds(array $customerGroupIds): array
+    public function findCustomerGroupProductConcretePricesDataByCustomerGroupIds(array $customerGroupIds): array
     {
         $priceProductCustomerGroupsQuery = $this->queryPriceProductCustomerGroup($customerGroupIds)
             ->filterByFkProduct(null, Criteria::ISNOTNULL);
@@ -117,7 +125,7 @@ class PriceProductCustomerGroupStorageRepository extends AbstractRepository impl
             ->find();
 
         return $this->getFactory()
-            ->createcustomerGroupPriceProductMapper()
+            ->createCustomerGroupPriceProductMapper()
             ->mapPriceProductCustomerGroupArrayToTransfers(
                 $priceProductCustomerGroups,
             );
@@ -285,27 +293,25 @@ class PriceProductCustomerGroupStorageRepository extends AbstractRepository impl
      * @module CustomerGroup
      * @module PriceProductCustomerGroup
      *
-     * @param array $filterBycustomerGroupIds
+     * @param array $filterByCustomerGroupIds
      *
      * @return \Orm\Zed\PriceProductCustomerGroup\Persistence\VsyPriceProductCustomerGroupQuery
      */
-    protected function queryPriceProductCustomerGroup(array $filterBycustomerGroupIds = []): VsyPriceProductCustomerGroupQuery
+    protected function queryPriceProductCustomerGroup(array $filterByCustomerGroupIds = []): VsyPriceProductCustomerGroupQuery
     {
         return $this->getFactory()
             ->getPropelPriceProductCustomerGroupQuery()
             ->usePriceProductStoreQuery()
-            ->innerJoinStore()
-            ->innerJoinCurrency()
-            ->usePriceProductQuery()
-            ->innerJoinPriceType()
-            ->endUse()
+                ->innerJoinStore()
+                ->innerJoinCurrency()
+                ->usePriceProductQuery()
+                    ->innerJoinPriceType()
+                ->endUse()
             ->endUse()
             ->useCustomerGroupQuery()
-            ->useSpyCustomerGroupToCustomerQuery()
-            ->_if((bool)$filterBycustomerGroupIds)
-            ->filterByFkCustomerGroup_In($filterBycustomerGroupIds)
-            ->_endif()
-            ->endUse()
+                ->_if((bool)$filterByCustomerGroupIds)
+                    ->filterByIdCustomerGroup_In($filterByCustomerGroupIds)
+                ->_endif()
             ->endUse();
     }
 
@@ -317,8 +323,7 @@ class PriceProductCustomerGroupStorageRepository extends AbstractRepository impl
     protected function withPriceProductAbstractData(ModelCriteria $modelCriteria): ModelCriteria
     {
         return $this->withPriceProductData($modelCriteria)
-            ->withColumn(VsyPriceProductCustomerGroupTableMap::COL_FK_PRODUCT_ABSTRACT, PriceProductCustomerGroupStorageTransfer::ID_PRODUCT)
-            ->withColumn(VsyCustomerGroupTableMap::COL_FK_MERCHANT, PriceProductCustomerGroupValueTransfer::FK_MERCHANT);
+            ->withColumn(VsyPriceProductCustomerGroupTableMap::COL_FK_PRODUCT_ABSTRACT, PriceProductCustomerGroupStorageTransfer::ID_PRODUCT);
     }
 
     /**
@@ -329,8 +334,7 @@ class PriceProductCustomerGroupStorageRepository extends AbstractRepository impl
     protected function withPriceProductConcreteData(ModelCriteria $modelCriteria): ModelCriteria
     {
         return $this->withPriceProductData($modelCriteria)
-            ->withColumn(VsyPriceProductCustomerGroupTableMap::COL_FK_PRODUCT, PriceProductCustomerGroupStorageTransfer::ID_PRODUCT)
-            ->withColumn(VsyCustomerGroupTableMap::COL_FK_MERCHANT, PriceProductCustomerGroupValueTransfer::FK_MERCHANT);
+            ->withColumn(VsyPriceProductCustomerGroupTableMap::COL_FK_PRODUCT, PriceProductCustomerGroupStorageTransfer::ID_PRODUCT);
     }
 
     /**
@@ -347,14 +351,13 @@ class PriceProductCustomerGroupStorageRepository extends AbstractRepository impl
     protected function withPriceProductData(ModelCriteria $modelCriteria): ModelCriteria
     {
         return $modelCriteria
-            ->withColumn(VsyStoreTableMap::COL_NAME, PriceProductCustomerGroupStorageTransfer::STORE_NAME)
-            ->withColumn(VsyCurrencyTableMap::COL_CODE, PriceProductCustomerGroupValueTransfer::CURRENCY_CODE)
-            ->withColumn(VsyCustomerGroupTocustomerGroupTableMap::COL_FK_COMPANY_BUSINESS_UNIT, PriceProductCustomerGroupStorageTransfer::ID_COMPANY_BUSINESS_UNIT)
-            ->withColumn(VsyCustomerGroupTocustomerGroupTableMap::COL_FK_MERCHANT_RELATIONSHIP, PriceProductCustomerGroupValueTransfer::ID_MERCHANT_RELATIONSHIP)
-            ->withColumn(VsyPriceTypeTableMap::COL_NAME, PriceProductCustomerGroupValueTransfer::PRICE_TYPE)
-            ->withColumn(VsyPriceProductStoreTableMap::COL_PRICE_DATA, PriceProductCustomerGroupValueTransfer::PRICE_DATA)
-            ->withColumn(VsyPriceProductStoreTableMap::COL_GROSS_PRICE, PriceProductCustomerGroupValueTransfer::GROSS_PRICE)
-            ->withColumn(VsyPriceProductStoreTableMap::COL_NET_PRICE, PriceProductCustomerGroupValueTransfer::NET_PRICE);
+            ->withColumn(SpyStoreTableMap::COL_NAME, PriceProductCustomerGroupStorageTransfer::STORE_NAME)
+            ->withColumn(SpyCurrencyTableMap::COL_CODE, PriceProductCustomerGroupValueTransfer::CURRENCY_CODE)
+            ->withColumn(SpyCustomerGroupTableMap::COL_ID_CUSTOMER_GROUP, PriceProductCustomerGroupValueTransfer::ID_CUSTOMER_GROUP)
+            ->withColumn(SpyPriceTypeTableMap::COL_NAME, PriceProductCustomerGroupValueTransfer::PRICE_TYPE)
+            ->withColumn(SpyPriceProductStoreTableMap::COL_PRICE_DATA, PriceProductCustomerGroupValueTransfer::PRICE_DATA)
+            ->withColumn(SpyPriceProductStoreTableMap::COL_GROSS_PRICE, PriceProductCustomerGroupValueTransfer::GROSS_PRICE)
+            ->withColumn(SpyPriceProductStoreTableMap::COL_NET_PRICE, PriceProductCustomerGroupValueTransfer::NET_PRICE);
     }
 
     /**
