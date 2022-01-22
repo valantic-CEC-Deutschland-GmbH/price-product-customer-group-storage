@@ -20,7 +20,7 @@
     "spryker/synchronization-behavior": "^1.0.0",
     "spryker/synchronization-extension": "^1.1.0",
     "spryker/transfer": "^3.25.0",
-    "valantic-spryker/price-product-customer-group": "^0.5.0",
+    "valantic-spryker/price-product-customer-group": "^0.6.0",
     "valantic-spryker/price-product-customer-group-storage-extension": "^0.3.0"
   },
   "require-dev": {
