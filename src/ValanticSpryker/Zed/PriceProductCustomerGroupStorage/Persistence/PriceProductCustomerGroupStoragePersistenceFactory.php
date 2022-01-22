@@ -29,7 +29,7 @@ class PriceProductCustomerGroupStoragePersistenceFactory extends AbstractPersist
     }
 
     /**
-     * @return \Orm\Zed\PriceProductCustomerGroupStorage\Persistence\VsyPriceProductCustomerGroupQuery
+     * @return \Orm\Zed\PriceProductCustomerGroup\Persistence\VsyPriceProductCustomerGroupQuery
      */
     public function getPropelPriceProductCustomerGroupQuery(): VsyPriceProductCustomerGroupQuery
     {

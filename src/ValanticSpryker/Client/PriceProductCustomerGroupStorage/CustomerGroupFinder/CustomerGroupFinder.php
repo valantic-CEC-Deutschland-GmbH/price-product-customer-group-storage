@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Client\PriceProductCustomerGroupStorage\CustomerGroupFinder;
 
+use Generated\Shared\Transfer\CustomerTransfer;
+
 class CustomerGroupFinder implements CustomerGroupFinderInterface
 {
     /**

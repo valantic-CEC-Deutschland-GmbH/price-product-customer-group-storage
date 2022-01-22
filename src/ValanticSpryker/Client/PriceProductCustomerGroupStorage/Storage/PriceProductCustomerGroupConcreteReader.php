@@ -4,6 +4,7 @@ declare(strict_types = 1);
 
 namespace ValanticSpryker\Client\PriceProductCustomerGroupStorage\Storage;
 
+use Generated\Shared\Transfer\PriceProductStorageTransfer;
 use ValanticSpryker\Client\PriceProductCustomerGroupStorage\Dependency\Client\PriceProductCustomerGroupStorageToStorageClientInterface;
 use ValanticSpryker\Shared\PriceProductCustomerGroupStorage\PriceProductCustomerGroupStorageConstants;
 
@@ -41,16 +42,16 @@ class PriceProductCustomerGroupConcreteReader implements PriceProductCustomerGro
 
     /**
      * @param int $idProductAbstract
-     * @param int $idCompanyBusinessUnit
+     * @param int $idCustomerGroup
      *
      * @return array<\Generated\Shared\Transfer\PriceProductTransfer>
      */
-    public function findPriceCustomerGroupConcrete(int $idProductAbstract, int $idCompanyBusinessUnit): array
+    public function findPriceCustomerGroupConcrete(int $idProductAbstract, int $idCustomerGroup): array
     {
         $key = $this->priceStorageKeyGenerator->generateKey(
             PriceProductCustomerGroupStorageConstants::PRICE_PRODUCT_CONCRETE_CUSTOMER_GROUP_RESOURCE_NAME,
             $idProductAbstract,
-            $idCompanyBusinessUnit,
+            $idCustomerGroup,
         );
 
         return $this->findPriceProductStorageTransfer($key);
