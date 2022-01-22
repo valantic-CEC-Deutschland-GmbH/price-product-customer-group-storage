@@ -1,6 +1,6 @@
 # Price Product Customer Group Storage
 
-[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](https://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
 
 This modules is used for saving customer group prices into storage and contains plugins for reading them.
 
