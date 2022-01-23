@@ -152,3 +152,6 @@ class PriceProductCustomerGroupStorageConfig extends VsyPriceProductCustomerGrou
 
 </database>
 ```
+
+### Migrate database and generate transfers
+`propel:install`, `transfer:generate`
