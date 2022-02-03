@@ -129,3 +129,29 @@ class PriceProductCustomerGroupStorageConfig extends VsyPriceProductCustomerGrou
     }
 }
 ```
+
+### Enable event behavior
+`src/Pyz/Zed/PriceProductCustomerGroup/Persistence/Propel/Schema/vsy_price_product_customer_group.schema.xml`
+
+```
+<?xml version="1.0"?>
+<database
+    xmlns="spryker:schema-01"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    name="zed"
+    xsi:schemaLocation="spryker:schema-01 https://static.spryker.com/schema-01.xsd"
+    namespace="Orm\Zed\PriceProductCustomerGroup\Persistence"
+    package="src.Orm.Zed.PriceProductCustomerGroup.Persistence"
+>
+
+    <table name="vsy_price_product_customer_group">
+        <behavior name="event">
+            <parameter name="vsy_price_product_customer_group_all" column="*"/>
+        </behavior>
+    </table>
+
+</database>
+```
+
+### Migrate database and generate transfers
+`propel:install`, `transfer:generate`
