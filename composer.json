@@ -1,5 +1,5 @@
 {
-  "name": "valantic-spryker/price-product-customer-group-storage",
+  "name": "valantic-cec/price-product-customer-group-storage",
   "type": "library",
   "description": "This modules is used for saving customer group prices into storage and contains plugins for reading them.",
   "license": "proprietary",
@@ -50,13 +50,6 @@
     "sort-packages": true,
     "allow-plugins": {
       "dealerdirect/phpcodesniffer-composer-installer": true
-    },
-    "gitlab-domains": ["gitlab.nxs360.com"]
-  },
-  "repositories": {
-    "gitlab.nxs360.com/461": {
-      "type": "composer",
-      "url": "https://gitlab.nxs360.com/api/v4/group/461/-/packages/composer/packages.json"
     }
   }
 }
