@@ -6,7 +6,7 @@ This modules is used for saving customer group prices into storage and contains 
 
 ### Install package
 ```
-composer req valantic-cec/price-product-customer-group-storage
+composer req valantic-spryker/price-product-customer-group-storage
 ```
 
 ### Register plugins
