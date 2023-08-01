@@ -1,5 +1,5 @@
 {
-  "name": "valantic-cec/price-product-customer-group-storage",
+  "name": "valantic-spryker/price-product-customer-group-storage",
   "type": "library",
   "description": "This modules is used for saving customer group prices into storage and contains plugins for reading them.",
   "license": "proprietary",
